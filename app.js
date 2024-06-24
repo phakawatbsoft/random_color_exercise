@@ -1,12 +1,3 @@
-const btn = document.querySelector('button')
-const h1 = document.querySelector('h1')
-
-btn.addEventListener('click',()=>{
-    const newColor = randomColor()
-    document.body.style.backgroundColor = newColor
-    h1.innerText = newColor
-})
-
 const randomColor = ()=>{
     const r = Math.floor(Math.random() * 255);
     const g = Math.floor(Math.random() * 255);
@@ -14,3 +5,20 @@ const randomColor = ()=>{
 
     return `rgb(${r},${g},${b})`
 }
+
+const btns = document.querySelectorAll('button')
+const h1s = document.querySelectorAll('h1')
+
+for(let btn of btns){
+    btn.addEventListener('click',colorize)
+}
+
+for(let h1 of h1s){
+    h1.addEventListener('click',colorize)
+}
+
+function colorize() {
+    this.style.backgroundColor = randomColor()
+    this.style.color = randomColor()
+}
+
